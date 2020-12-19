@@ -71,11 +71,11 @@ function generatePassword() {
   // If password does not have one of each chosen character type regenerate the password
   } while (passwordValid === false);
 
-  console.log(finalPassword);
+  return finalPassword;
 
 }
 
-/*
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -90,5 +90,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-*/
-generatePassword ()
+
