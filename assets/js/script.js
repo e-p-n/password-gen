@@ -2,31 +2,33 @@
 function generatePassword() {
   
   //declare necessary variables
-    //variable for storing how many characters long the pasword will be
+
+    //variables for retrieving and storing how many characters long the pasword will be
+      let minLength = 8;
+      let maxLength = 128;
       let passwordLength;
-    //variables for determining what types of characters will be used and storing those characters 
-    //as a resource to generate the password
+
+    //variables for determining what types of characters will be used and storing those characters as a resource to generate the password
       let lc;
       let uc;
       let num;
       let sc;
       let characters="";
+
     //variable for storing the final password
       let finalPassword = "";
-    //variable for determining if password has at least one of each kind of character
-      let passwordValid;
   
   //request desired password length and store result
   do {
-    passwordLength = window.prompt("How long do you want your password be? \nPick a length between 8 and 128 characters.");
+    passwordLength = window.prompt("How long do you want your password be? \nPick a length between " + minLength + " and " + maxLength + " characters.");
     //convert length into an integer
     passwordLength = parseInt(passwordLength);
     //check to make sure a valid number was chosen and warn user if it was not.
-    if (Number.isNaN(passwordLength) === true || passwordLength < 8 || passwordLength > 128) {
+    if (Number.isNaN(passwordLength) === true || passwordLength < minLength || passwordLength > maxLength) {
       window.alert("Invalid entry. Please try again.");
     } 
   //Check to make sure a valid number was chosen and redeploy prompt if it was not.
-  } while (Number.isNaN(passwordLength) === true || passwordLength < 8 || passwordLength > 128);
+  } while (Number.isNaN(passwordLength) === true || passwordLength < minLength || passwordLength > maxLength);
   
   //find out what types characters to include as options for password and store them in the characters variable
   do {
@@ -53,32 +55,28 @@ function generatePassword() {
   }
   if (sc === true) {
     characters += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-  }
-  do {
-    //randomly generate a character and add it to the password until the password is the desired length.
+  }  
+  
+  //randomly generate a character and add it to the password until the password is the desired length.
+  while (finalPassword === "") {
     for (var i = 0; i <passwordLength; i++) {
       finalPassword = finalPassword + characters.charAt(Math.floor(Math.random()*characters.length));
     } 
     //Check to see that password has at least one of each chosen character type. If not reset the finalPassword variable
-    if (
-           lc  === true && finalPassword.match(/[a-z]/) === null 
-        || uc  === true && finalPassword.match(/[A-Z]/) === null 
-        || num === true && finalPassword.match(/[0-9]/) === null
-        || sc  === true && finalPassword.match(/[-!$%^&*()\\_+|~=`{}\[\]:";'<>?,.\/]/) === null
-       ) {
-      passwordValid = false;
+    if ( lc  === true && finalPassword.match(/[a-z]/) === null 
+      || uc  === true && finalPassword.match(/[A-Z]/) === null 
+      || num === true && finalPassword.match(/[0-9]/) === null
+      || sc  === true && finalPassword.match(/[-!$%^&*()\\_+|~=`{}\[\]:";'<>?,.\/]/) === null
+      ) {
+      //reset the password to an empty string. Removes the failed password and triggers the continuation of the loop.
       finalPassword="";
-    } else {
-      passwordValid=true;
-    }
-  // If password does not have one of each chosen character type regenerate the password
-  } while (passwordValid === false);
+    } 
+  } 
 
   //return the password.
   return finalPassword;
 
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
