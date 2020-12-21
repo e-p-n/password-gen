@@ -13,7 +13,7 @@
     2. Add if statement and do...while loop to section that checks what type of characters the user wants to use and makes sure they have selected at least one. If not it calls an alert dialogue that warns the user and asks them to try again. It then redeploys all of the confirm dialogues.
     3. Add if statement and while loop to the password generation section to make sure that the finalPassword variable has at least 1 of each type of chosen character. If not it resets the value of the variable to "" and generates a new password.
 10. Removed commenting out of code for form and tested the page.
-11. Updated CSS so that the generate password buttton's width would stretch to 100% if viewed on a phone or other smaller device.
+11. Updated CSS so that the generate password button's width would stretch to 100% if viewed on a phone or other smaller device.
 
 ## Screenshot
 ![](./assets/images/screenshot.png)
