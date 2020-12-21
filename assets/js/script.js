@@ -55,7 +55,7 @@ function generatePassword() {
   }
   if (sc === true) {
     characters += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-  }  
+  }                
   
   //randomly generate a character and add it to the password until the password is the desired length.
   while (finalPassword === "") {
@@ -66,7 +66,7 @@ function generatePassword() {
     if ( lc  === true && finalPassword.match(/[a-z]/) === null 
       || uc  === true && finalPassword.match(/[A-Z]/) === null 
       || num === true && finalPassword.match(/[0-9]/) === null
-      || sc  === true && finalPassword.match(/[-!$%^&*()\\_+|~=`{}\[\]:";'<>?,.\/]/) === null
+      || sc  === true && finalPassword.match(/[-!@$#%^&*()\\_+|~=`{}\[\]:";'<>?,.\/]/) === null
       ) {
       //reset the password to an empty string. Removes the failed password and triggers the continuation of the loop.
       finalPassword="";
